@@ -91,6 +91,9 @@ static double __fileSize(NSString *filePath){
     return 0.0;
 }
 
+//use this to resolve compile warning
+//https://stackoverflow.com/questions/32719140/calling-convention-with-a-shared-library-for-android
+#define __cdecl
 int __cdecl printf(const char *format, ...)  {
     int charCount = 0;
     va_list args;
