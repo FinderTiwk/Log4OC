@@ -45,19 +45,17 @@ void saveLog(NSString *log, NSUInteger level,NSString *author);
 #ifndef doLog
 
 #define doLog(__level,author,...)           \
-if ((__curLogLevel > __level)) {        \
-return;                             \
-}                                       \
-va_list argList;                        \
-va_start(argList, message);             \
-NSString *logString = [[NSString alloc] initWithFormat:message arguments:argList];                 \
-const char *cString = [logString UTF8String];   \
-__showlog(cString, __level,author);     \
-va_end(argList);                        \
-saveLog(logString,__level,author);      \
-
+    if ((__curLogLevel > __level)) {        \
+        return;                             \
+    }                                       \
+    va_list argList;                        \
+    va_start(argList, message);             \
+    NSString *logString = [[NSString alloc] initWithFormat:message arguments:argList];                 \
+    const char *cString = [logString UTF8String];   \
+    __showlog(cString, __level,author);     \
+    va_end(argList);                        \
+    saveLog(logString,__level,author);      \
 #endif
-
 
 void DEBUGLog(NSString *message,...){
     doLog(LogLevelDEBUG,nil);
