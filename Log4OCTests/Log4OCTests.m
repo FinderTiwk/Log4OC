@@ -20,11 +20,16 @@
     // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
+- (void)testA{
+    dxoLog(@"dddd",@"ccccc",nil);
+}
+
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
 }
 
 - (void)testLog{
+    DEBUGLog(@"张三", @"这是一个测试日志");
     [self measureBlock:^{
         DEBUGLog(@"测试数据1");
         INFOLog(@"测试数据1");
@@ -46,7 +51,7 @@
     INFOLog(@"测试数据3");
     WARNINGLog(@"测试数据3");
     ERRORLog(@"测试数据3");
-    
+
     NSLog(@"============LogLevelWARNING==============");
     setLogLevel(LogLevelWARNING);
     DEBUGLog(@"测试数据4");

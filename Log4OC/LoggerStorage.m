@@ -38,12 +38,13 @@ void setLogMaxSize(NSUInteger threshold){
     [LoggerStoreLocalFile setLogSizeThreshold:threshold];
 }
 
-void saveLog(NSString *log, NSUInteger level){
+void saveLog(NSString *log, NSUInteger level,NSString *author){
     if (__logStoragemode == 1) {
         //保存到数据库
-        NSString *sql = [NSString stringWithFormat:@"INSERT INTO `Logger` (level,content) VALUES (%@,'%@')",@(level),log];
+        NSString *sql = [NSString stringWithFormat:@"INSERT INTO `Logger` (level,content,author) VALUES (%@,'%@','%@')",@(level),log,author?:@"Apple"];
         [[LoggerStorageSqlite sharedStorage] executeSQL:sql completion:NULL];
     }
 }
+
 
 

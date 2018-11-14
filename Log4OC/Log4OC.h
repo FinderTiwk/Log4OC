@@ -18,6 +18,8 @@ typedef NS_ENUM(NSUInteger,LogLevel) {
     LogLevelWARNING = 2,
     /*! 只显示ERRORLog的log*/
     LogLevelERROR   = 3,
+    /*!  关闭所有日志*/
+    LogLevelNONE    = 4,
 };
 
 //日志打印前缀
@@ -29,8 +31,8 @@ static NSString * LogPrefixs[] = {
 };
 
 // 设置日志级别，default LogLevelDEBUG
-EXTERN_API(void) setLogLevel(LogLevel level);
-EXTERN_API(LogLevel) currentLogLevel(void);
+extern void setLogLevel(LogLevel level);
+extern LogLevel currentLogLevel(void);
 
 /* 是否将日志保存在本地
  @prama mode  是否存储日志
@@ -44,18 +46,24 @@ EXTERN_API(LogLevel) currentLogLevel(void);
      YES: 同时输出到控制台和文件 (DEBUG时用)
      NO: 只输出到文件
  */
-EXTERN_API(void) setLogMode(NSUInteger mode,NSUInteger clean, BOOL both);
+extern void setLogMode(NSUInteger mode,NSUInteger clean, BOOL both);
 
 //当日志存储为本地文件时,设置日志大小阀值,K为单位, default 1024K/1M
-EXTERN_API(void) setLogMaxSize(NSUInteger threshold);
+extern void setLogMaxSize(NSUInteger threshold);
 
 ////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////
-EXTERN_API(void) DEBUGLog(NSString *message,...) NS_FORMAT_FUNCTION(1,2);
+#define LOGDECL extern void
+#define LOGDECL2 __attribute__((overloadable)) extern void
 
-EXTERN_API(void) INFOLog(NSString *message,...) NS_FORMAT_FUNCTION(1,2);
+LOGDECL  DEBUGLog(NSString *message,...) NS_FORMAT_FUNCTION(1,2);
+LOGDECL2 DEBUGLog(NSString *author,NSString *message,...) NS_FORMAT_FUNCTION(1,3);
 
-EXTERN_API(void) WARNINGLog(NSString *message,...) NS_FORMAT_FUNCTION(1,2);
+LOGDECL  INFOLog(NSString *message,...) NS_FORMAT_FUNCTION(1,2);
+LOGDECL2 INFOLog(NSString *author,NSString *message,...) NS_FORMAT_FUNCTION(1,3);
 
-EXTERN_API(void) ERRORLog(NSString *message,...) NS_FORMAT_FUNCTION(1,2);
+LOGDECL  WARNINGLog(NSString *message,...) NS_FORMAT_FUNCTION(1,2);
+LOGDECL2 WARNINGLog(NSString *author,NSString *message,...) NS_FORMAT_FUNCTION(1,3);
 
+LOGDECL  ERRORLog(NSString *message,...) NS_FORMAT_FUNCTION(1,2);
+LOGDECL2 ERRORLog(NSString *author,NSString *message,...) NS_FORMAT_FUNCTION(1,3);

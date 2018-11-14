@@ -25,19 +25,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		00384F292171893800682C0F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 007C915B217180B50094BFD8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 007C9163217180B50094BFD8;
-			remoteInfo = Log4OC;
-		};
 		00384F5E2171D17600682C0F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 007C915B217180B50094BFD8 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 007C9163217180B50094BFD8;
 			remoteInfo = Log4OC;
+		};
+		005A9696219AFC5700BD6199 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 007C915B217180B50094BFD8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 007C9163217180B50094BFD8;
+			remoteInfo = Log4OC;
+		};
+		005A9698219AFFF300BD6199 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 007C915B217180B50094BFD8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 00384F472171D13800682C0F;
+			remoteInfo = Demo;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -179,7 +186,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				00384F2A2171893800682C0F /* PBXTargetDependency */,
+				005A9697219AFC5700BD6199 /* PBXTargetDependency */,
+				005A9699219AFFF300BD6199 /* PBXTargetDependency */,
 			);
 			name = Log4OCTests;
 			productName = Log4OCTests;
@@ -233,6 +241,7 @@
 				TargetAttributes = {
 					00384F222171893800682C0F = {
 						CreatedOnToolsVersion = 10.0;
+						TestTargetID = 00384F472171D13800682C0F;
 					};
 					00384F472171D13800682C0F = {
 						CreatedOnToolsVersion = 10.0;
@@ -322,15 +331,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		00384F2A2171893800682C0F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 007C9163217180B50094BFD8 /* Log4OC */;
-			targetProxy = 00384F292171893800682C0F /* PBXContainerItemProxy */;
-		};
 		00384F5F2171D17600682C0F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 007C9163217180B50094BFD8 /* Log4OC */;
 			targetProxy = 00384F5E2171D17600682C0F /* PBXContainerItemProxy */;
+		};
+		005A9697219AFC5700BD6199 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 007C9163217180B50094BFD8 /* Log4OC */;
+			targetProxy = 005A9696219AFC5700BD6199 /* PBXContainerItemProxy */;
+		};
+		005A9699219AFFF300BD6199 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 00384F472171D13800682C0F /* Demo */;
+			targetProxy = 005A9698219AFFF300BD6199 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -369,6 +383,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
 			};
 			name = Debug;
 		};
@@ -387,6 +402,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
 			};
 			name = Release;
 		};

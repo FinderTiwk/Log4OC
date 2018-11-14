@@ -25,7 +25,7 @@
 - (void)prepare:(void (^)(BOOL, LoggerStorageSqlite *))completion{
     [self connectDB:^(BOOL success, LoggerStorageSqlite *storage) {
         if (success) {
-            NSString *sql = @"CREATE TABLE IF NOT EXISTS `Logger`  ( `level` INTEGER, `time` DATE DEFAULT CURRENT_TIMESTAMP,`content` TEXT)";
+            NSString *sql = @"CREATE TABLE IF NOT EXISTS `Logger`  ( `level` INTEGER, `time` DATE DEFAULT CURRENT_TIMESTAMP,`content` TEXT, `author` TEXT)";
             [storage executeSQL:sql
                      completion:completion];
         }
