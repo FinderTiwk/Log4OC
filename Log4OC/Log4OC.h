@@ -25,8 +25,8 @@ typedef NS_ENUM(NSUInteger,LogLevel) {
 //日志打印前缀
 static NSString * LogPrefixs[] = {
     [LogLevelDEBUG]   = @"[🐞DEBUG]",
-    [LogLevelINFO]    = @"[🌴INFO]",
-    [LogLevelWARNING] = @"[⚠️WARNING]",
+    [LogLevelINFO]    = @"[🌴 INFO]",
+    [LogLevelWARNING] = @"[⚠️ WARN]",
     [LogLevelERROR]   = @"[🔴ERROR]"
 };
 

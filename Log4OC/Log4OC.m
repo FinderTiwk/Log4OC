@@ -12,7 +12,7 @@ static __inline__ __attribute__((always_inline)) NSDateFormatter * loggerDataFor
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         format = [[NSDateFormatter alloc] init];
-        format.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+        format.dateFormat = @"yy/MM/dd HH:mm:ss:SSS";
     });
     return format;
 }
@@ -22,7 +22,7 @@ static __inline__ __attribute__((always_inline)) void __showlog(const char *cStr
     NSDateFormatter *format = loggerDataFormatter();
     const char *dateString = [[format stringFromDate:[NSDate date]] UTF8String];
     if (author) {
-    printf("%s %s(%s): %s \n",[prefix UTF8String],dateString,[author UTF8String],cString);
+        printf("%s %s<%s>: %s \n",[prefix UTF8String],dateString,[author UTF8String],cString);
     }else{
         printf("%s %s: %s \n",[prefix UTF8String],dateString,cString);
     }
@@ -42,6 +42,7 @@ LogLevel currentLogLevel(void){
 
 
 void saveLog(NSString *log, NSUInteger level,NSString *author);
+
 #ifndef doLog
 
 #define doLog(__level,author,...)           \
@@ -55,6 +56,7 @@ void saveLog(NSString *log, NSUInteger level,NSString *author);
     __showlog(cString, __level,author);     \
     va_end(argList);                        \
     saveLog(logString,__level,author);      \
+
 #endif
 
 void DEBUGLog(NSString *message,...){
